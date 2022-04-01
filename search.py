@@ -27,7 +27,7 @@ def table_data(s):
     # 获取表名
     cur.execute('SELECT * FROM' + "'" + s + "'")
     list = cur.fetchall()  # Tables 为元组列表
-    print(list)
+    # print(list)
     w = []
     v = []
     for i in range(len(list)):
