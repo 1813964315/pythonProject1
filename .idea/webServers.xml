@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="2b92e08d-ba73-417b-8810-1500399c9231" name="lab" url="https://github.com/Mao-cpu/Algrithm_platform">
+        <fileTransfer accessType="SFTP" sshConfigId="cc66cefa-275a-48e1-9c7a-53c8d6811543" sshConfig="lab">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
