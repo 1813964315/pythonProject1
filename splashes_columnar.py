@@ -1,8 +1,12 @@
-import os
+import sqlite3
 import numpy as np
 import matplotlib.pyplot as plt
 
+from search import table_data
+
+
 def scatter(s):
+    # s = 'beibao0.in'
     plt.rcParams['font.sans-serif'] = ['SimHei']
     plt.rcParams['axes.unicode_minus'] = False
     # matplotlib画图中中文显示会有问题，需要这两行设置默认字体
@@ -11,32 +15,7 @@ def scatter(s):
     plt.ylabel('价值')
     plt.xlim(xmax=200, xmin=0)
     plt.ylim(ymax=150, ymin=0)
-    daten = open('./data/' + s, "r")
-    lines = daten.readlines()
-    list = []
-    for i in lines:
-        list.append(i.strip().split(' '))
-    daten.close()
-    # print(list)
-    f = []
-    w = []
-    v = []
-    x = []
-    y = []
-    for i in list:
-        for b in i:
-            f.append(b)
-    # print(f)
-    for i in range(len(f)):
-        if i == 0:
-            c = int(f[i])
-        elif i == 1:
-            n = int(f[i])
-        elif i > 1 and i % 2 == 0:
-            w.append(int(f[i]))
-        elif i > 1 and i % 2 == 1:
-            v.append(int(f[i]))
-    # vw(c,n,w,v,x,y)
+    c,n,w,v = table_data(s)
     colors = 'blue'  #  点的颜色
     area = np.pi * 3**2 # 点面积
     # for i in range(len(w)):
@@ -44,5 +23,22 @@ def scatter(s):
     plt.legend()
     plt.yticks(())
     plt.title('散点图')
+    plt.savefig('./picture/'+ s +'.png')  # 保存图片
+    plt.show()
+# scatter('beibao3.in')
+
+
+def barh(s):
+    fig, ax = plt.subplots()
+    c, n, w, v = table_data(s)
+    y=[]
+    print(w,v)
+    for i in range(len(w)):
+        y.append(v[i]/w[i])
+    # print(y)
+    y_pos = np.arange(len(w)) + 1
+    ax.barh(y_pos, y, color='b', align="center")
     plt.savefig('./picture/'+ s +'.jpg')  # 保存图片
     plt.show()
+# scatter('beibao4.in')
+# barh('beibao0.in')
